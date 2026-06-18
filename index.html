@@ -3,504 +3,824 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Studio Linear</title>
+  <title>SX Festival Expo Berlin 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0a0a0a;
-      --offblack: #111111;
-      --white: #f5f5f5;
-      --red: #e8281e;
-      --gray: #888;
-      --border: rgba(255,255,255,0.12);
+      --yellow: #f0e020;
+      --red: #cc1111;
+      --orange: #ff6600;
+      --dark: #0d0d0d;
+      --dark2: #1a1a1a;
+      --white: #ffffff;
+      --light: #f2f2f2;
+      --blue: #1a3aff;
+      --green: #00aa44;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--black);
+      background: var(--dark);
       color: var(--white);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Barlow', sans-serif;
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.5;
       overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
     /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 100;
+      z-index: 200;
+      background: var(--dark);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 40px;
-      height: 64px;
-      background: var(--black);
-      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 52px;
     }
 
     .nav-logo {
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      color: var(--red);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      color: var(--white);
     }
+
+    .nav-logo span { display: block; }
 
     .nav-links {
       display: flex;
-      gap: 36px;
+      align-items: center;
+      gap: 28px;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.7;
-      transition: opacity 0.2s;
+      color: rgba(255,255,255,0.75);
+      transition: color 0.2s;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active { opacity: 1; }
+    .nav-links a:hover { color: var(--white); }
+
+    .btn-tickets {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 8px 20px;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
 
     /* ── HERO ── */
     .hero {
-      margin-top: 64px;
-      padding: 120px 40px 100px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 64px;
+      margin-top: 52px;
+      position: relative;
+      min-height: 520px;
+      background: linear-gradient(135deg, #1a0a2e 0%, #0d0d1a 40%, #1a0505 100%);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 60px 48px;
     }
 
-    .hero-label {
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 50%, rgba(80,20,120,0.4) 0%, transparent 60%),
+        radial-gradient(ellipse at 30% 80%, rgba(180,20,20,0.2) 0%, transparent 50%);
+    }
+
+    /* fake crowd silhouette */
+    .hero-crowd {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 220px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
       font-size: 11px;
+      font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--red);
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(52px, 7vw, 96px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.9;
+      color: var(--yellow);
+      letter-spacing: -1px;
+    }
+
+    .hero-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-top: 8px;
       margin-bottom: 32px;
     }
 
-    .hero-headline {
-      font-size: clamp(32px, 5vw, 64px);
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline-white {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 2px solid var(--white);
+      color: var(--white);
+      font-size: 12px;
       font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -1px;
-      max-width: 900px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
     }
 
-    .hero-headline em {
-      font-style: italic;
-      font-family: 'Playfair Display', serif;
-      color: var(--red);
+    .btn-outline-white:hover {
+      background: var(--white);
+      color: var(--dark);
     }
 
-    /* ── DIVIDER ── */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 0 40px;
+    /* ── TICKETS ── */
+    .tickets-section {
+      background: var(--light);
+      color: var(--dark);
+      padding: 48px;
     }
 
-    /* ── SECTION WRAPPER ── */
-    .section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 80px 40px;
+    .tickets-header {
+      margin-bottom: 28px;
     }
 
-    .section-label {
+    .tickets-header h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tickets-header p {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .tickets-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 2px;
+    }
+
+    .ticket-card {
+      padding: 24px 20px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ticket-card.yellow { background: var(--yellow); color: var(--dark); }
+    .ticket-card.white-bg { background: var(--white); color: var(--dark); border: 1px solid #e0e0e0; }
+    .ticket-card.dark-bg { background: var(--dark2); color: var(--white); }
+    .ticket-card.red-bg { background: var(--red); color: var(--white); }
+
+    .ticket-from {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 4px;
+    }
+
+    .ticket-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .ticket-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .ticket-desc {
       font-size: 11px;
+      line-height: 1.5;
+      opacity: 0.75;
+      flex-grow: 1;
+    }
+
+    .ticket-btn {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 8px 0;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-bottom: 2px solid currentColor;
+      align-self: flex-start;
+    }
+
+    .ticket-btn-filled {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 10px 20px;
+      background: var(--dark);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* Day tickets row */
+    .day-tickets {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 2px;
+    }
+
+    .day-ticket {
+      background: var(--white);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--dark);
+      border-top: 2px solid #e0e0e0;
+    }
+
+    .day-ticket.orange-bg { background: var(--orange); color: var(--white); }
+    .day-ticket.red-side { background: var(--red); color: var(--white); }
+
+    .day-ticket-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .day-ticket-date {
+      font-size: 10px;
+      opacity: 0.6;
+      margin-top: 2px;
+    }
+
+    .day-ticket-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .arrow-btn {
+      width: 28px;
+      height: 28px;
+      border: 2px solid currentColor;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    /* ── TOP VOICES ── */
+    .top-voices {
+      background: var(--dark);
+      padding: 60px 48px;
+    }
+
+    .section-title-xl {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(48px, 7vw, 88px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: 0.95;
+      margin-bottom: 40px;
+    }
+
+    .voices-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .voice-card {
+      position: relative;
+      aspect-ratio: 3/4;
+      background: var(--dark2);
+      overflow: hidden;
+    }
+
+    .voice-card.featured { grid-column: span 2; aspect-ratio: auto; min-height: 400px; }
+
+    .voice-card-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 50%);
+    }
+
+    .voice-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      opacity: 0.08;
+    }
+
+    .voice-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 6px;
+    }
+
+    .voice-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .voice-info {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+
+    .voice-date {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--yellow);
+      margin-top: 4px;
+    }
+
+    /* nav dots */
+    .slider-dots {
+      display: flex;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .dot.active { background: var(--white); }
+
+    /* ── SPONSOR SECTIONS ── */
+    .sponsor-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .sponsor-block {
+      padding: 56px 48px;
+      position: relative;
+    }
+
+    .sponsor-block.yellow-block { background: var(--yellow); color: var(--dark); }
+    .sponsor-block.white-block { background: var(--white); color: var(--dark); }
+    .sponsor-block.dark-block { background: var(--dark2); color: var(--white); }
+
+    .sponsor-label {
+      font-size: 10px;
+      font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 48px;
+      opacity: 0.5;
+      margin-bottom: 20px;
     }
 
-    /* ── STORY ── */
-    .story-grid {
+    .sponsor-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .sponsor-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 24px;
+    }
+
+    .booth-badge {
+      position: absolute;
+      top: 40px;
+      right: 48px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .booth-badge span { font-size: 16px; font-weight: 900; }
+
+    /* loyalfans / verlox row */
+    .partner-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .partner-block {
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .partner-block.loyalfans-bg {
+      background: #0d0d0d;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .partner-block.verlox-bg { background: #111827; }
+
+    .loyalfans-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      color: var(--white);
+    }
+
+    .loyalfans-logo .o-accent {
+      display: inline-block;
+      width: 38px;
+      height: 38px;
+      border: 4px solid var(--yellow);
+      border-radius: 50%;
+      margin: 0 2px -6px;
+    }
+
+    .verlox-sub {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 4px;
+    }
+
+    .verlox-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .verlox-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+      max-width: 340px;
+    }
+
+    .verlox-btns {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* ── BRANDS GRID ── */
+    .brands-section {
+      background: var(--light);
+      padding: 48px 48px 0;
+      color: var(--dark);
+    }
+
+    .brands-section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 28px;
+    }
+
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .brand-card {
+      padding: 28px 24px;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .brand-card.c-blue { background: var(--blue); color: var(--white); }
+    .brand-card.c-dark { background: #111; color: var(--white); }
+    .brand-card.c-yellow { background: var(--yellow); color: var(--dark); }
+    .brand-card.c-white { background: var(--white); color: var(--dark); border: 1px solid #e0e0e0; }
+    .brand-card.c-orange { background: var(--orange); color: var(--white); }
+    .brand-card.c-green { background: var(--green); color: var(--white); }
+    .brand-card.c-red { background: var(--red); color: var(--white); }
+    .brand-card.c-purple { background: #6600cc; color: var(--white); }
+
+    .brand-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-desc {
+      font-size: 11px;
+      line-height: 1.5;
+      opacity: 0.7;
+      margin-top: 8px;
+    }
+
+    .brand-link {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-bottom: 1px solid currentColor;
+      align-self: flex-start;
+      margin-top: 12px;
+    }
+
+    /* ── LOCATION ── */
+    .location-section {
+      background: var(--dark);
+      padding: 80px 48px;
+    }
+
+    .location-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: start;
     }
 
-    .story-title {
-      font-size: clamp(28px, 3.5vw, 48px);
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      line-height: 1.15;
-    }
-
-    .story-body {
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .story-body p + p { margin-top: 20px; }
-
-    .stat-row {
-      display: flex;
-      gap: 60px;
-      margin-top: 60px;
-    }
-
-    .stat-item {}
-
-    .stat-number {
-      font-size: 48px;
+    .location-section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(48px, 6vw, 80px);
       font-weight: 900;
-      letter-spacing: -2px;
-      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: 0.9;
+      margin-bottom: 32px;
     }
 
-    .stat-desc {
+    .location-address {
+      font-size: 16px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+    }
+
+    .location-map-link {
       font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      border-bottom: 1px solid var(--yellow);
+      display: inline-block;
+    }
+
+    .map-placeholder {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.1);
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.2);
+      font-size: 13px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray);
-      margin-top: 4px;
-    }
-
-    /* ── TEAM ── */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .team-card {
-      position: relative;
-      background: var(--offblack);
-      aspect-ratio: 3/4;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .team-card-inner {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 24px;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
-    }
-
-    .team-avatar {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 72px;
-      opacity: 0.15;
-      user-select: none;
-    }
-
-    .team-name {
-      font-size: 18px;
-      font-weight: 700;
-      position: relative;
-      z-index: 1;
-    }
-
-    .team-role {
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-top: 4px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .team-card:hover .team-avatar { opacity: 0.25; }
-
-    /* ── SERVICES ── */
-    .services-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .service-item {
-      width: 50%;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: clamp(20px, 2.5vw, 32px);
-      font-weight: 600;
-      letter-spacing: -0.3px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      transition: color 0.2s;
-    }
-
-    .service-item:nth-child(odd) { padding-right: 40px; border-right: 1px solid var(--border); }
-    .service-item:nth-child(even) { padding-left: 40px; }
-
-    .service-item .arrow {
-      font-size: 14px;
-      color: var(--red);
-      opacity: 0;
-      transform: translateX(-8px);
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .service-item:hover { color: var(--red); }
-    .service-item:hover .arrow { opacity: 1; transform: translateX(0); }
-
-    /* ── CLIENTS ── */
-    .clients-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .client-tag {
-      display: inline-block;
-      padding: 8px 18px;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.6);
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .client-tag:hover {
-      border-color: var(--red);
-      color: var(--white);
-    }
-
-    /* ── INDUSTRIES ── */
-    .industries-text {
-      font-size: clamp(18px, 2vw, 24px);
-      line-height: 1.7;
-      color: rgba(255,255,255,0.75);
-      max-width: 780px;
-    }
-
-    .industries-text strong {
-      color: var(--white);
-      font-weight: 600;
-    }
-
-    /* ── FAQ ── */
-    .faq-list { border-top: 1px solid var(--border); }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-    }
-
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      color: var(--white);
-      text-align: left;
-      font-family: inherit;
-      font-size: 17px;
-      font-weight: 600;
-      padding: 28px 0;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      transition: color 0.2s;
-    }
-
-    .faq-question:hover { color: var(--red); }
-
-    .faq-icon {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      font-weight: 300;
-      transition: transform 0.3s, background 0.2s;
-    }
-
-    .faq-item.open .faq-icon {
-      transform: rotate(45deg);
-      background: var(--red);
-      border-color: var(--red);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .faq-item.open .faq-answer { max-height: 400px; }
-
-    .faq-answer-inner {
-      padding-bottom: 28px;
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.65);
-      max-width: 760px;
-    }
-
-    /* ── CTA BANNER ── */
-    .cta-banner {
-      background: var(--red);
-      padding: 100px 40px;
-      text-align: center;
-    }
-
-    .cta-banner h2 {
-      font-size: clamp(32px, 5vw, 72px);
-      font-weight: 900;
-      letter-spacing: -2px;
-      color: var(--white);
-      margin-bottom: 40px;
-      line-height: 1.05;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 16px 40px;
-      border-radius: 100px;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn-white {
-      background: var(--white);
-      color: var(--black);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--white);
-      color: var(--white);
     }
 
     /* ── FOOTER ── */
     footer {
-      padding: 60px 40px;
-      border-top: 1px solid var(--border);
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 64px 48px 32px;
+    }
+
+    .footer-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 64px;
     }
 
-    .footer-logo {
-      font-size: 22px;
-      font-weight: 900;
-      color: var(--red);
-      text-transform: uppercase;
-      letter-spacing: -0.5px;
-    }
-
-    .footer-tagline {
-      font-size: 13px;
-      color: var(--gray);
-      margin-top: 8px;
-      line-height: 1.5;
-    }
-
-    .footer-col h4 {
+    .footer-logo-text {
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 11px;
-      letter-spacing: 0.18em;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gray);
+      opacity: 0.5;
       margin-bottom: 16px;
     }
 
-    .footer-col ul { list-style: none; }
-
-    .footer-col li {
-      font-size: 14px;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 8px;
-      transition: color 0.2s;
+    .footer-big-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.9;
+      letter-spacing: -1px;
     }
 
-    .footer-col li:hover { color: var(--white); cursor: pointer; }
+    .footer-contact h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 24px;
+    }
+
+    .contact-form input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      padding: 14px 16px;
+      font-family: inherit;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .contact-form input::placeholder { color: rgba(255,255,255,0.35); }
+    .contact-form input:focus { outline: none; border-color: var(--yellow); }
+
+    .contact-form button {
+      margin-top: 8px;
+      background: var(--yellow);
+      color: var(--dark);
+      border: none;
+      padding: 14px 32px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
 
     .footer-bottom {
-      border-top: 1px solid var(--border);
-      padding: 24px 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 12px;
-      color: var(--gray);
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .badges {
-      display: flex;
+      flex-wrap: wrap;
       gap: 12px;
-      align-items: center;
     }
 
-    .badge {
-      padding: 4px 12px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom-links a {
       font-size: 10px;
-      letter-spacing: 0.1em;
+      font-weight: 600;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gray);
+      color: rgba(255,255,255,0.4);
+      transition: color 0.2s;
+    }
+
+    .footer-bottom-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      font-size: 10px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.08em;
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       nav { padding: 0 20px; }
-      .nav-links { gap: 20px; }
-      .hero { padding: 80px 20px 60px; }
-      .divider { margin: 0 20px; }
-      .section { padding: 60px 20px; }
-      .story-grid { grid-template-columns: 1fr; gap: 40px; }
-      .stat-row { gap: 32px; flex-wrap: wrap; }
-      .team-grid { grid-template-columns: 1fr 1fr; }
-      .service-item { width: 100%; padding-right: 0 !important; padding-left: 0 !important; border-right: none !important; }
-      footer { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-      .cta-banner { padding: 60px 20px; }
+      .nav-links { gap: 16px; }
+      .hero { padding: 40px 24px; }
+      .tickets-section, .top-voices, .sponsor-block, .partner-block,
+      .brands-section, .location-section, footer { padding-left: 24px; padding-right: 24px; }
+      .tickets-grid, .day-tickets, .voices-grid, .brands-grid { grid-template-columns: 1fr 1fr; }
+      .voice-card.featured { grid-column: span 2; }
+      .sponsor-row, .partner-row, .location-grid, .footer-grid { grid-template-columns: 1fr; }
     }
 
-    @media (max-width: 480px) {
-      .team-grid { grid-template-columns: 1fr; }
+    @media (max-width: 540px) {
+      .tickets-grid, .day-tickets, .brands-grid { grid-template-columns: 1fr; }
+      .voices-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -508,327 +828,302 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">Studio Linear</div>
+    <div class="nav-logo">
+      <span>sxfestival</span>
+      <span>expo berlin</span>
+    </div>
     <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Work</a></li>
-      <li><a href="#" class="active">About</a></li>
-      <li><a href="#">Lately</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#">Lineup</a></li>
+      <li><a href="#">Exhibitors &amp; B2B</a></li>
+      <li><a href="#">Creators</a></li>
+      <li><a href="#">Program</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#" class="btn-tickets">Tickets</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
-  <div style="margin-top:64px;">
-    <div class="hero">
-      <p class="hero-label">About the Studio</p>
-      <h1 class="hero-headline">
-        We are a woman-owned, independent creative agency. We specialize in crafting <em>human-centered</em> experiences and brands that truly resonate.
-      </h1>
-      <div class="stat-row">
-        <div class="stat-item">
-          <div class="stat-number">13+</div>
-          <div class="stat-desc">Years in business</div>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-crowd"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">The world's most anticipated adult event</p>
+      <h1 class="hero-title">SX Festival<br>Expo</h1>
+      <p class="hero-sub">June 25–28 &nbsp;·&nbsp; Berlin 2026</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn-outline-white">List Up Now</a>
+        <a href="#" class="btn-outline-white">Become a Sponsor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKETS -->
+  <section class="tickets-section">
+    <div class="tickets-header">
+      <h2>Tickets</h2>
+      <p>Choose your experience</p>
+    </div>
+
+    <div class="tickets-grid">
+      <!-- Festival Passes -->
+      <div class="ticket-card yellow">
+        <div>
+          <div class="ticket-from">From</div>
+          <div class="ticket-price">€0</div>
+          <div class="ticket-title">Festival Passes</div>
+          <p class="ticket-desc">For curious explorers of modern sexuality. Lectures, workshops, Expo, networking &amp; much more.</p>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">200+</div>
-          <div class="stat-desc">Brands launched</div>
+        <a href="#" class="ticket-btn">List up →</a>
+      </div>
+
+      <!-- Creator Passes -->
+      <div class="ticket-card white-bg">
+        <div>
+          <div class="ticket-title">Creator Passes</div>
+          <p class="ticket-desc">For Adult Content Creators. Connect, grow your audience, perform.</p>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">9</div>
-          <div class="stat-desc">Team members</div>
+        <a href="#" class="ticket-btn">Free Entry →</a>
+      </div>
+
+      <!-- Business Passes -->
+      <div class="ticket-card white-bg">
+        <div>
+          <div class="ticket-from">From</div>
+          <div class="ticket-price">€25</div>
+          <div class="ticket-title">Business Passes</div>
+          <p class="ticket-desc">For Business Professionals and B2B Only. €25 VIP Entry, networking, all business opportunities in one place.</p>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">100%</div>
-          <div class="stat-desc">Woman-owned</div>
+        <a href="#" class="ticket-btn-filled" style="background:var(--dark);color:var(--white);">B2B Lineup Now →</a>
+      </div>
+
+      <!-- Red Moon Party -->
+      <div class="ticket-card red-bg">
+        <div>
+          <div class="ticket-title">Red Moon Party</div>
+          <p class="ticket-desc">The first torch is sold out. Second edition – extremely limited. Saturday night.</p>
         </div>
+        <a href="#" class="ticket-btn" style="color:var(--white);">Limited Entry</a>
+      </div>
+    </div>
+
+    <!-- Day tickets -->
+    <div class="day-tickets">
+      <div class="day-ticket">
+        <div>
+          <div class="day-ticket-label">Saturday</div>
+          <div class="day-ticket-date">27.06.26</div>
+        </div>
+        <div class="day-ticket-right">
+          TICKET
+          <div class="arrow-btn">→</div>
+        </div>
+      </div>
+      <div class="day-ticket">
+        <div>
+          <div class="day-ticket-label">Sunday</div>
+          <div class="day-ticket-date">28.06.26</div>
+        </div>
+        <div class="day-ticket-right">
+          TICKET
+          <div class="arrow-btn">→</div>
+        </div>
+      </div>
+      <div class="day-ticket orange-bg">
+        <div>
+          <div class="day-ticket-label">Weekend</div>
+          <div class="day-ticket-date">2 Days</div>
+        </div>
+        <div class="day-ticket-right">
+          TICKET
+          <div class="arrow-btn">→</div>
+        </div>
+      </div>
+      <div class="day-ticket red-side">
+        <div>
+          <div class="day-ticket-label">Red Moon Party</div>
+          <div class="day-ticket-date">Saturday NFT</div>
+        </div>
+        <div class="day-ticket-right">
+          <div class="arrow-btn">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOP VOICES -->
+  <section class="top-voices">
+    <h2 class="section-title-xl">Top Voices</h2>
+    <div class="voices-grid">
+      <div class="voice-card" style="background:#1a1a2e;">
+        <div class="voice-placeholder">♠</div>
+        <div class="voice-card-inner">
+          <div class="voice-tag">sxfestival expo berlin</div>
+          <div class="voice-name">Artist 1</div>
+          <div class="voice-info">Performance</div>
+        </div>
+      </div>
+      <div class="voice-card featured" style="background:#2a1020;">
+        <div class="voice-placeholder" style="font-size:120px;">★</div>
+        <div class="voice-card-inner">
+          <div class="voice-tag">sxfestival expo berlin</div>
+          <div class="voice-name">Kylie Darling</div>
+          <div class="voice-info">Performance: Open stage, audience-driven and authentic on-body event</div>
+          <div class="voice-date">June 27</div>
+        </div>
+      </div>
+      <div class="voice-card" style="background:#201a10;">
+        <div class="voice-placeholder">◆</div>
+        <div class="voice-card-inner">
+          <div class="voice-tag">sxfestival expo berlin</div>
+          <div class="voice-name">Artist 3</div>
+          <div class="voice-info">Performance</div>
+        </div>
+      </div>
+      <div class="voice-card" style="background:#1a1020;">
+        <div class="voice-placeholder">●</div>
+        <div class="voice-card-inner">
+          <div class="voice-tag">sxfestival expo berlin</div>
+          <div class="voice-name">Artist 4</div>
+          <div class="voice-info">Performance</div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </section>
+
+  <!-- SPONSOR ROW 1 -->
+  <div class="sponsor-row">
+    <div class="sponsor-block yellow-block">
+      <p class="sponsor-label">Sponsor Presents</p>
+      <h3 class="sponsor-headline">Keynote: "How to Maintain &amp; Gain New Customers" by Nikki Night</h3>
+      <p class="sponsor-brand">Stripchat</p>
+    </div>
+    <div class="sponsor-block white-block">
+      <div class="booth-badge"><span>25</span>Booth</div>
+      <p class="sponsor-label">Brand Partner Presents</p>
+      <h3 class="sponsor-headline">Visit us at for a glass of cava! Meet our community discover what we're building!</h3>
+      <p class="sponsor-brand">Kaufmich</p>
+    </div>
+  </div>
+
+  <!-- LOYALFANS / VERLOX ROW -->
+  <div class="partner-row">
+    <div class="partner-block loyalfans-bg">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:0.4;margin-bottom:16px;">We want you to visit Loyalfans at the Expo and see how you can grow your base. Meet us, discover our platform and your fans.</div>
+      <div class="loyalfans-logo">L<span class="o-accent"></span>YALFANS</div>
+    </div>
+    <div class="partner-block verlox-bg">
+      <div class="verlox-sub">Verlox Powered by Concordpay</div>
+      <div class="verlox-headline">Verlox is here!<br>The best age<br>verification solution</div>
+      <p class="verlox-text">Verlox is the only compliant age verification solution. Explore the future-proofing compliant age verification through their systems at the expo.</p>
+      <div class="verlox-btns">
+        <div class="btn-circle">Booth</div>
+        <div class="btn-circle" style="background:var(--yellow);border-color:var(--yellow);color:var(--dark);">Meet Us</div>
       </div>
     </div>
   </div>
 
-  <hr class="divider" />
+  <!-- FEATURED BRANDS -->
+  <section class="brands-section">
+    <h2>Featured Brands</h2>
+    <div class="brands-grid">
+      <div class="brand-card c-blue">
+        <div class="brand-name">Verlox</div>
+        <p class="brand-desc">Age verification &amp; compliance solutions for adult platforms.</p>
+        <span class="brand-link">verlox.io</span>
+      </div>
+      <div class="brand-card c-dark">
+        <div class="brand-name">Stripchat</div>
+        <p class="brand-desc">Stripchat is the world's premier adult content platform. Join, perform, connect.</p>
+        <span class="brand-link">stripchat.com</span>
+      </div>
+      <div class="brand-card c-yellow">
+        <div class="brand-name">Kaufmich</div>
+        <p class="brand-desc">Kaufmich is Germany's leading escort and date platform, discreet &amp; professional.</p>
+        <span class="brand-link">kaufmich.com</span>
+      </div>
+      <div class="brand-card c-white">
+        <div class="brand-name">Loyalfans</div>
+        <p class="brand-desc">Grow your fanbase &amp; earn more. The subscription platform for creators.</p>
+        <span class="brand-link">loyalfans.com</span>
+      </div>
+      <div class="brand-card c-orange">
+        <div class="brand-name">PPT</div>
+        <p class="brand-desc">A leading and community-driven platform for adult content creators &amp; performers.</p>
+        <span class="brand-link">Learn more</span>
+      </div>
+      <div class="brand-card c-purple">
+        <div class="brand-name">Pornhub</div>
+        <p class="brand-desc">Pornhub is a user-generated &amp; professional adult content community platform.</p>
+        <span class="brand-link">Learn more</span>
+      </div>
+      <div class="brand-card c-red">
+        <div class="brand-name">Brand</div>
+        <p class="brand-desc">Explore our community — discover, connect, and create.</p>
+        <span class="brand-link">Discover</span>
+      </div>
+      <div class="brand-card c-green">
+        <div class="brand-name">Brand</div>
+        <p class="brand-desc">Explore our community — discover, connect, and create.</p>
+        <span class="brand-link">Discover</span>
+      </div>
+    </div>
+  </section>
 
-  <!-- STORY -->
-  <div class="section">
-    <p class="section-label">Our Story</p>
-    <div class="story-grid">
+  <!-- LOCATION -->
+  <section class="location-section">
+    <div class="location-grid">
       <div>
-        <h2 class="story-title">Founded in 2011 with a simple but relentless vision.</h2>
+        <h2>Location</h2>
+        <p class="location-address">
+          Herrnsbrückers Berlin<br>
+          Köpenicker Straße 18, Berlin
+        </p>
+        <a href="#" class="location-map-link">Google Maps →</a>
+        <div style="margin-top:40px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.35;">
+          sxfestival<br>expo<br>berlin
+        </div>
       </div>
-      <div class="story-body">
-        <p>We founded Studio Linear in 2011 with a simple but relentless vision: to create the kind of bold, boundary-pushing design we weren't seeing anywhere else.</p>
-        <p>What started as a solo operation has grown into an award-winning, female-owned creative agency — a tight-knit team of strategists, designers, developers, and writers who genuinely love what they do.</p>
-        <p>We've built our reputation by taking on the kind of work that demands real craft: regulated industries, culture-driven brands, CPG packaging that stops people dead in the aisle. We're not here to churn out cookie-cutter work — we're here to make things that matter.</p>
-        <p>Over the past decade we've partnered with brands ranging from scrappy startups to household names, helping each one find a visual identity as distinct as what they stand for.</p>
+      <div class="map-placeholder">
+        Map — Köpenicker Straße 18, Berlin
       </div>
     </div>
-  </div>
-
-  <hr class="divider" />
-
-  <!-- TEAM -->
-  <div class="section">
-    <p class="section-label">The Squad</p>
-    <div class="team-grid">
-      <!-- cards -->
-      <div class="team-card" style="background:#161616;">
-        <div class="team-avatar">★</div>
-        <div class="team-card-inner">
-          <div class="team-name">Andrea Beaulieu</div>
-          <div class="team-role">Founder &amp; Creative Director</div>
-        </div>
-      </div>
-      <div class="team-card" style="background:#131313;">
-        <div class="team-avatar">◆</div>
-        <div class="team-card-inner">
-          <div class="team-name">Michelle Mercado</div>
-          <div class="team-role">Studio &amp; Project Manager</div>
-        </div>
-      </div>
-      <div class="team-card" style="background:#181818;">
-        <div class="team-avatar">●</div>
-        <div class="team-card-inner">
-          <div class="team-name">Jacqueline Cooke</div>
-          <div class="team-role">Brand Strategist</div>
-        </div>
-      </div>
-      <div class="team-card" style="background:#141414;">
-        <div class="team-avatar">▲</div>
-        <div class="team-card-inner">
-          <div class="team-name">Haley Mills</div>
-          <div class="team-role">Designer</div>
-        </div>
-      </div>
-      <div class="team-card" style="background:#191919;">
-        <div class="team-avatar">◇</div>
-        <div class="team-card-inner">
-          <div class="team-name">Bianca Sara</div>
-          <div class="team-role">Designer</div>
-        </div>
-      </div>
-      <div class="team-card" style="background:#151515;">
-        <div class="team-avatar">○</div>
-        <div class="team-card-inner">
-          <div class="team-name">Courtney Gayer</div>
-          <div class="team-role">Designer</div>
-        </div>
-      </div>
-      <div class="team-card" style="background:#121212;">
-        <div class="team-avatar">⬡</div>
-        <div class="team-card-inner">
-          <div class="team-name">Chase Jennings</div>
-          <div class="team-role">Developer</div>
-        </div>
-      </div>
-      <div class="team-card" style="background:#171717;">
-        <div class="team-avatar">✦</div>
-        <div class="team-card-inner">
-          <div class="team-name">Ellen Freeman</div>
-          <div class="team-role">Copywriter</div>
-        </div>
-      </div>
-      <div class="team-card" style="background:#1a1a1a;">
-        <div class="team-avatar">◎</div>
-        <div class="team-card-inner">
-          <div class="team-name">Sarah Walker</div>
-          <div class="team-role">Social Media Strategist</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider" />
-
-  <!-- SERVICES -->
-  <div class="section">
-    <p class="section-label">What We Do</p>
-    <div class="services-list">
-      <div class="service-item">Brand Strategy <span class="arrow">→</span></div>
-      <div class="service-item">Branding <span class="arrow">→</span></div>
-      <div class="service-item">Package Design <span class="arrow">→</span></div>
-      <div class="service-item">Merchandise Design <span class="arrow">→</span></div>
-      <div class="service-item">Social Media <span class="arrow">→</span></div>
-      <div class="service-item">Branded Templates <span class="arrow">→</span></div>
-      <div class="service-item">Graphic Design <span class="arrow">→</span></div>
-      <div class="service-item">Web Design <span class="arrow">→</span></div>
-      <div class="service-item">Web Development <span class="arrow">→</span></div>
-      <div class="service-item">Copywriting <span class="arrow">→</span></div>
-      <div class="service-item">Marketing Campaigns <span class="arrow">→</span></div>
-      <div class="service-item">Out-of-Home Advertising <span class="arrow">→</span></div>
-      <div class="service-item">Environmental Design <span class="arrow">→</span></div>
-    </div>
-  </div>
-
-  <hr class="divider" />
-
-  <!-- CLIENTS -->
-  <div class="section">
-    <p class="section-label">Client Roster</p>
-    <div class="clients-grid">
-      <span class="client-tag">Google</span>
-      <span class="client-tag">Dropbox</span>
-      <span class="client-tag">Curaleaf</span>
-      <span class="client-tag">PAX</span>
-      <span class="client-tag">Kiva</span>
-      <span class="client-tag">Cousins Maine Lobster</span>
-      <span class="client-tag">Houseplant</span>
-      <span class="client-tag">Hey Binx</span>
-      <span class="client-tag">Yew Yew</span>
-      <span class="client-tag">Harridan Vodka</span>
-      <span class="client-tag">Florette</span>
-      <span class="client-tag">Yummi Karma</span>
-      <span class="client-tag">Ganja Girls</span>
-      <span class="client-tag">ButACake</span>
-      <span class="client-tag">Island Pond</span>
-      <span class="client-tag">Oasis Refinery</span>
-      <span class="client-tag">Brimstone Cannabis</span>
-      <span class="client-tag">Project Slush</span>
-    </div>
-  </div>
-
-  <hr class="divider" />
-
-  <!-- INDUSTRIES -->
-  <div class="section">
-    <p class="section-label">Industries</p>
-    <p class="industries-text">
-      We are highly experienced within <strong>regulated and culture-driven industries</strong> and primarily operate as a CPG branding agency. Our core focus includes <strong>cannabis and psychedelics</strong>, food &amp; beverage, wellness, beauty, and lifestyle brands — the kind of work that demands both creative courage and strategic precision.
-    </p>
-  </div>
-
-  <hr class="divider" />
-
-  <!-- FAQ -->
-  <div class="section">
-    <p class="section-label">FAQ</p>
-    <div class="faq-list" id="faq">
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          What type of agency is Studio Linear?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Studio Linear is a boutique brand identity and packaging design agency. We specialize in building comprehensive brand systems — from strategy and naming through visual identity, packaging, and digital presence.</div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          What does "boutique agency" mean?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">It means we're intentionally small. We keep our client roster selective so every project gets our full attention — you work directly with our senior team, not handed off to junior staff.</div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          What industries do you specialize in?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">We primarily work in cannabis and psychedelics, CPG, food &amp; beverage, wellness, and lifestyle. We're deeply experienced navigating regulated industry requirements while still delivering bold, differentiated design.</div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          What is your typical project timeline?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Most brand identity projects take 3–6 months from kickoff to final delivery. Packaging projects vary depending on complexity. We'll give you a detailed timeline after the discovery call.</div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          What does your process look like?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">We work in four phases: <strong>Discovery</strong> (understanding your brand, market, and goals), <strong>Strategy</strong> (positioning and direction), <strong>Conception</strong> (creative development), and <strong>Execution</strong> (final files, guidelines, launch support).</div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          What is your pricing range?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Brand identity projects typically range from $15,000 to $125,000 depending on scope. We offer clear, itemized proposals after our discovery conversation — no hidden fees, ever.</div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          How do we get started?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Book a free discovery call. We'll spend 30 minutes learning about your project, your goals, and whether we're the right fit. If we are, we'll send over a proposal within a week.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- CTA BANNER -->
-  <div class="cta-banner">
-    <h2>Let's build something<br />worth talking about.</h2>
-    <div class="cta-buttons">
-      <a href="mailto:hello@studiolinear.com" class="btn btn-white">Free Discovery Call</a>
-      <a href="mailto:hello@studiolinear.com" class="btn btn-outline">Email Us To Chat More</a>
-    </div>
-  </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
-    <div>
-      <div class="footer-logo">Studio Linear</div>
-      <p class="footer-tagline">A woman-owned, independent<br />creative agency since 2011.</p>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-text">sxfestival expo berlin</div>
+        <div class="footer-big-title">SX Festival<br>Expo 2026<br>Berlin</div>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <form class="contact-form">
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <button type="submit">Send To Us</button>
+        </form>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Navigation</h4>
-      <ul>
-        <li>Home</li>
-        <li>Work</li>
-        <li>About</li>
-        <li>Lately</li>
-        <li>Contact</li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Recent Work</h4>
-      <ul>
-        <li>Ganja Girls</li>
-        <li>ButACake</li>
-        <li>Island Pond</li>
-        <li>Oasis Refinery</li>
-        <li>Brimstone Cannabis</li>
-        <li>Project Slush</li>
-      </ul>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© All rights reserved · sxtech.eu</span>
+      <div class="footer-bottom-links">
+        <a href="#">Media Apply</a>
+        <a href="#">Lineup 27.06.26</a>
+        <a href="#">Exhibitors CTA</a>
+        <a href="#">Imprint</a>
+        <a href="#">Sponsor</a>
+        <a href="#">Program</a>
+        <a href="#">News</a>
+      </div>
     </div>
   </footer>
-  <div class="footer-bottom">
-    <span>© 2024 Studio Linear. All rights reserved. hello@studiolinear.com</span>
-    <div class="badges">
-      <span class="badge">Women Owned</span>
-      <span class="badge">1% for the Planet</span>
-    </div>
-  </div>
-
-  <script>
-    function toggleFaq(btn) {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    }
-  </script>
 
 </body>
 </html>

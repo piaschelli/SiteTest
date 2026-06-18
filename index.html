@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Studio Linear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --offblack: #111111;
+      --white: #f5f5f5;
+      --red: #e8281e;
+      --gray: #888;
+      --border: rgba(255,255,255,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: var(--black);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--red);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { opacity: 1; }
+
+    /* ── HERO ── */
+    .hero {
+      margin-top: 64px;
+      padding: 120px 40px 100px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 64px;
+    }
+
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 32px;
+    }
+
+    .hero-headline {
+      font-size: clamp(32px, 5vw, 64px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      max-width: 900px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      color: var(--red);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 40px;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 48px;
+    }
+
+    /* ── STORY ── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .story-title {
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+
+    .story-body {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .story-body p + p { margin-top: 20px; }
+
+    .stat-row {
+      display: flex;
+      gap: 60px;
+      margin-top: 60px;
+    }
+
+    .stat-item {}
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--white);
+    }
+
+    .stat-desc {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* ── TEAM ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .team-card {
+      position: relative;
+      background: var(--offblack);
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .team-card-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+    }
+
+    .team-avatar {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 72px;
+      opacity: 0.15;
+      user-select: none;
+    }
+
+    .team-name {
+      font-size: 18px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .team-role {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .team-card:hover .team-avatar { opacity: 0.25; }
+
+    /* ── SERVICES ── */
+    .services-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .service-item {
+      width: 50%;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: clamp(20px, 2.5vw, 32px);
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+
+    .service-item:nth-child(odd) { padding-right: 40px; border-right: 1px solid var(--border); }
+    .service-item:nth-child(even) { padding-left: 40px; }
+
+    .service-item .arrow {
+      font-size: 14px;
+      color: var(--red);
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .service-item:hover { color: var(--red); }
+    .service-item:hover .arrow { opacity: 1; transform: translateX(0); }
+
+    /* ── CLIENTS ── */
+    .clients-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .client-tag {
+      display: inline-block;
+      padding: 8px 18px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .client-tag:hover {
+      border-color: var(--red);
+      color: var(--white);
+    }
+
+    /* ── INDUSTRIES ── */
+    .industries-text {
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.7;
+      color: rgba(255,255,255,0.75);
+      max-width: 780px;
+    }
+
+    .industries-text strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* ── FAQ ── */
+    .faq-list { border-top: 1px solid var(--border); }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      text-align: left;
+      font-family: inherit;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 28px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover { color: var(--red); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 300;
+      transition: transform 0.3s, background 0.2s;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-item.open .faq-answer { max-height: 400px; }
+
+    .faq-answer-inner {
+      padding-bottom: 28px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.65);
+      max-width: 760px;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: var(--red);
+      padding: 100px 40px;
+      text-align: center;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(32px, 5vw, 72px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--white);
+      margin-bottom: 40px;
+      line-height: 1.05;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 40px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--white);
+      color: var(--white);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 60px 40px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .footer-col h4 {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col li {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .footer-col li:hover { color: var(--white); cursor: pointer; }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding: 24px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--gray);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .badges {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .badge {
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 20px; }
+      .hero { padding: 80px 20px 60px; }
+      .divider { margin: 0 20px; }
+      .section { padding: 60px 20px; }
+      .story-grid { grid-template-columns: 1fr; gap: 40px; }
+      .stat-row { gap: 32px; flex-wrap: wrap; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .service-item { width: 100%; padding-right: 0 !important; padding-left: 0 !important; border-right: none !important; }
+      footer { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .cta-banner { padding: 60px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Studio Linear</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Work</a></li>
+      <li><a href="#" class="active">About</a></li>
+      <li><a href="#">Lately</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div style="margin-top:64px;">
+    <div class="hero">
+      <p class="hero-label">About the Studio</p>
+      <h1 class="hero-headline">
+        We are a woman-owned, independent creative agency. We specialize in crafting <em>human-centered</em> experiences and brands that truly resonate.
+      </h1>
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-number">13+</div>
+          <div class="stat-desc">Years in business</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">200+</div>
+          <div class="stat-desc">Brands launched</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">9</div>
+          <div class="stat-desc">Team members</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-desc">Woman-owned</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- STORY -->
+  <div class="section">
+    <p class="section-label">Our Story</p>
+    <div class="story-grid">
+      <div>
+        <h2 class="story-title">Founded in 2011 with a simple but relentless vision.</h2>
+      </div>
+      <div class="story-body">
+        <p>We founded Studio Linear in 2011 with a simple but relentless vision: to create the kind of bold, boundary-pushing design we weren't seeing anywhere else.</p>
+        <p>What started as a solo operation has grown into an award-winning, female-owned creative agency — a tight-knit team of strategists, designers, developers, and writers who genuinely love what they do.</p>
+        <p>We've built our reputation by taking on the kind of work that demands real craft: regulated industries, culture-driven brands, CPG packaging that stops people dead in the aisle. We're not here to churn out cookie-cutter work — we're here to make things that matter.</p>
+        <p>Over the past decade we've partnered with brands ranging from scrappy startups to household names, helping each one find a visual identity as distinct as what they stand for.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- TEAM -->
+  <div class="section">
+    <p class="section-label">The Squad</p>
+    <div class="team-grid">
+      <!-- cards -->
+      <div class="team-card" style="background:#161616;">
+        <div class="team-avatar">★</div>
+        <div class="team-card-inner">
+          <div class="team-name">Andrea Beaulieu</div>
+          <div class="team-role">Founder &amp; Creative Director</div>
+        </div>
+      </div>
+      <div class="team-card" style="background:#131313;">
+        <div class="team-avatar">◆</div>
+        <div class="team-card-inner">
+          <div class="team-name">Michelle Mercado</div>
+          <div class="team-role">Studio &amp; Project Manager</div>
+        </div>
+      </div>
+      <div class="team-card" style="background:#181818;">
+        <div class="team-avatar">●</div>
+        <div class="team-card-inner">
+          <div class="team-name">Jacqueline Cooke</div>
+          <div class="team-role">Brand Strategist</div>
+        </div>
+      </div>
+      <div class="team-card" style="background:#141414;">
+        <div class="team-avatar">▲</div>
+        <div class="team-card-inner">
+          <div class="team-name">Haley Mills</div>
+          <div class="team-role">Designer</div>
+        </div>
+      </div>
+      <div class="team-card" style="background:#191919;">
+        <div class="team-avatar">◇</div>
+        <div class="team-card-inner">
+          <div class="team-name">Bianca Sara</div>
+          <div class="team-role">Designer</div>
+        </div>
+      </div>
+      <div class="team-card" style="background:#151515;">
+        <div class="team-avatar">○</div>
+        <div class="team-card-inner">
+          <div class="team-name">Courtney Gayer</div>
+          <div class="team-role">Designer</div>
+        </div>
+      </div>
+      <div class="team-card" style="background:#121212;">
+        <div class="team-avatar">⬡</div>
+        <div class="team-card-inner">
+          <div class="team-name">Chase Jennings</div>
+          <div class="team-role">Developer</div>
+        </div>
+      </div>
+      <div class="team-card" style="background:#171717;">
+        <div class="team-avatar">✦</div>
+        <div class="team-card-inner">
+          <div class="team-name">Ellen Freeman</div>
+          <div class="team-role">Copywriter</div>
+        </div>
+      </div>
+      <div class="team-card" style="background:#1a1a1a;">
+        <div class="team-avatar">◎</div>
+        <div class="team-card-inner">
+          <div class="team-name">Sarah Walker</div>
+          <div class="team-role">Social Media Strategist</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- SERVICES -->
+  <div class="section">
+    <p class="section-label">What We Do</p>
+    <div class="services-list">
+      <div class="service-item">Brand Strategy <span class="arrow">→</span></div>
+      <div class="service-item">Branding <span class="arrow">→</span></div>
+      <div class="service-item">Package Design <span class="arrow">→</span></div>
+      <div class="service-item">Merchandise Design <span class="arrow">→</span></div>
+      <div class="service-item">Social Media <span class="arrow">→</span></div>
+      <div class="service-item">Branded Templates <span class="arrow">→</span></div>
+      <div class="service-item">Graphic Design <span class="arrow">→</span></div>
+      <div class="service-item">Web Design <span class="arrow">→</span></div>
+      <div class="service-item">Web Development <span class="arrow">→</span></div>
+      <div class="service-item">Copywriting <span class="arrow">→</span></div>
+      <div class="service-item">Marketing Campaigns <span class="arrow">→</span></div>
+      <div class="service-item">Out-of-Home Advertising <span class="arrow">→</span></div>
+      <div class="service-item">Environmental Design <span class="arrow">→</span></div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CLIENTS -->
+  <div class="section">
+    <p class="section-label">Client Roster</p>
+    <div class="clients-grid">
+      <span class="client-tag">Google</span>
+      <span class="client-tag">Dropbox</span>
+      <span class="client-tag">Curaleaf</span>
+      <span class="client-tag">PAX</span>
+      <span class="client-tag">Kiva</span>
+      <span class="client-tag">Cousins Maine Lobster</span>
+      <span class="client-tag">Houseplant</span>
+      <span class="client-tag">Hey Binx</span>
+      <span class="client-tag">Yew Yew</span>
+      <span class="client-tag">Harridan Vodka</span>
+      <span class="client-tag">Florette</span>
+      <span class="client-tag">Yummi Karma</span>
+      <span class="client-tag">Ganja Girls</span>
+      <span class="client-tag">ButACake</span>
+      <span class="client-tag">Island Pond</span>
+      <span class="client-tag">Oasis Refinery</span>
+      <span class="client-tag">Brimstone Cannabis</span>
+      <span class="client-tag">Project Slush</span>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- INDUSTRIES -->
+  <div class="section">
+    <p class="section-label">Industries</p>
+    <p class="industries-text">
+      We are highly experienced within <strong>regulated and culture-driven industries</strong> and primarily operate as a CPG branding agency. Our core focus includes <strong>cannabis and psychedelics</strong>, food &amp; beverage, wellness, beauty, and lifestyle brands — the kind of work that demands both creative courage and strategic precision.
+    </p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- FAQ -->
+  <div class="section">
+    <p class="section-label">FAQ</p>
+    <div class="faq-list" id="faq">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What type of agency is Studio Linear?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Studio Linear is a boutique brand identity and packaging design agency. We specialize in building comprehensive brand systems — from strategy and naming through visual identity, packaging, and digital presence.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What does "boutique agency" mean?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">It means we're intentionally small. We keep our client roster selective so every project gets our full attention — you work directly with our senior team, not handed off to junior staff.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What industries do you specialize in?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We primarily work in cannabis and psychedelics, CPG, food &amp; beverage, wellness, and lifestyle. We're deeply experienced navigating regulated industry requirements while still delivering bold, differentiated design.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What is your typical project timeline?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Most brand identity projects take 3–6 months from kickoff to final delivery. Packaging projects vary depending on complexity. We'll give you a detailed timeline after the discovery call.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What does your process look like?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We work in four phases: <strong>Discovery</strong> (understanding your brand, market, and goals), <strong>Strategy</strong> (positioning and direction), <strong>Conception</strong> (creative development), and <strong>Execution</strong> (final files, guidelines, launch support).</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What is your pricing range?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Brand identity projects typically range from $15,000 to $125,000 depending on scope. We offer clear, itemized proposals after our discovery conversation — no hidden fees, ever.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do we get started?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Book a free discovery call. We'll spend 30 minutes learning about your project, your goals, and whether we're the right fit. If we are, we'll send over a proposal within a week.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h2>Let's build something<br />worth talking about.</h2>
+    <div class="cta-buttons">
+      <a href="mailto:hello@studiolinear.com" class="btn btn-white">Free Discovery Call</a>
+      <a href="mailto:hello@studiolinear.com" class="btn btn-outline">Email Us To Chat More</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-logo">Studio Linear</div>
+      <p class="footer-tagline">A woman-owned, independent<br />creative agency since 2011.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li>Home</li>
+        <li>Work</li>
+        <li>About</li>
+        <li>Lately</li>
+        <li>Contact</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Recent Work</h4>
+      <ul>
+        <li>Ganja Girls</li>
+        <li>ButACake</li>
+        <li>Island Pond</li>
+        <li>Oasis Refinery</li>
+        <li>Brimstone Cannabis</li>
+        <li>Project Slush</li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <span>© 2024 Studio Linear. All rights reserved. hello@studiolinear.com</span>
+    <div class="badges">
+      <span class="badge">Women Owned</span>
+      <span class="badge">1% for the Planet</span>
+    </div>
+  </div>
+
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+
+</body>
+</html>
